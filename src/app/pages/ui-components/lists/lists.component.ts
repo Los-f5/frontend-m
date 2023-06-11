@@ -2,6 +2,7 @@ import {Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-alerta',
   templateUrl: './alerta.html',
@@ -15,7 +16,8 @@ export class AppAlerta {}
 })
 export class AppListsComponent {
   checked = false;
-
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
   
   constructor(public dialog: MatDialog) {}
 
