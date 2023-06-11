@@ -1,41 +1,85 @@
-import { Component } from '@angular/core';
+import {Component } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
 
-export interface Section {
-  name: string;
-  updated: Date;
-}
+@Component({
+  selector: 'app-alerta',
+  templateUrl: './alerta.html',
+})
+
+export class AppAlerta {}
 
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
 })
 export class AppListsComponent {
-  constructor() {}
+  checked = false;
 
-  typesOfShoes: string[] = ['Loafers', 'Sneakers'];
+  
+  constructor(public dialog: MatDialog) {}
 
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    },
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-  ];
+  openDialog() {
+    const dialogRef = this.dialog.open(AppAlerta);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
+  panelOpenState = false;
+  
+  email = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  dni = new FormControl('');
+  nom = new FormControl('');
+  ape = new FormControl('');
+  telf = new FormControl('');
+  dir = new FormControl('');
+  hora = new FormControl('');
+  getdni(){
+    if (this.dni.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }
+  getnom(){
+    if (this.dni.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }
+  getape(){
+    if (this.dni.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }
+  gettelf(){
+    if (this.dni.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }
+  getdir(){
+    if (this.dni.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }
+  gethora(){
+    if (this.dni.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }
+  
+  
 }
