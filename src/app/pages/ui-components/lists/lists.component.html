@@ -86,7 +86,7 @@
           <div class="col-3">
             <mat-form-field style="width: 100%;">
               <mat-label>Hora</mat-label>
-              <input matInput [formControl]="hora" required>
+              <input matInput [formControl]="hora" required type="time">
               <mat-error *ngIf="hora.invalid">{{gethora()}}</mat-error>
             </mat-form-field>
           </div>
@@ -139,17 +139,35 @@
         </mat-list>
         <mat-list>
           <mat-list-item>
-            <mat-form-field>
-              <mat-label>Angular forms</mat-label>
-              <input matInput [matDatepicker]="picker1" [formControl]="date">
-              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
+            <div class="row">
+              <i>:0</i>
+              <h6>12</h6>/
+              <h6>06</h6>/
+              <h6>2023</h6>
+            </div>
           </mat-list-item>
-          <mat-list-item>
-            <span matListItemTitle>Compra</span>
-          </mat-list-item>
-          <mat-list-item></mat-list-item>
+          <div class="row my-3">
+            <div class="fw-bold fs-5 col-8 ms-3">Compra</div>
+            <div class="col-3">
+              <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8 ms-3">Precio</div>
+            <div class="col-3"><input type="number" class="border border-dark rounded" style="width: 100%;"></div>
+          </div>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Codigo promocional
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+          </mat-accordion>
           <mat-list-item>
             <span matListItemTitle class="f-s-16 f-w-600">Total</span>
             <span matListItemLine class="mat-body-1">Second line</span>
