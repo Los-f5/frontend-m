@@ -2,33 +2,33 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Home',
+    navCap: 'Principal',
   },
   {
-    displayName: 'Dashboard',
+    displayName: 'Estadistica',
     iconName: 'layout-dashboard',
     route: '/dashboard',
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'General',
   },
   {
-    displayName: 'Badge',
+    displayName: 'Perfil',
     iconName: 'rosette',
     route: '/ui-components/badge',
   },
   {
-    displayName: 'Chips',
+    displayName: 'Vuelos Agendados',
     iconName: 'poker-chip',
     route: '/ui-components/chips',
   },
   {
-    displayName: 'Lists',
+    displayName: 'Agregar Clientes',
     iconName: 'list',
     route: '/ui-components/lists',
   },
   {
-    displayName: 'Menu',
+    displayName: 'Generar Comprobantes',
     iconName: 'layout-navbar-expand',
     route: '/ui-components/menu',
   },
