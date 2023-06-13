@@ -8,13 +8,17 @@ import {MatDialog} from '@angular/material/dialog';
   templateUrl: './alerta.html',
 })
 
-export class AppAlerta {}
+export class AppAlerta {
+  checked = false;
+}
 
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
 })
 export class AppListsComponent {
+  
+  holi: string;
   checked = false;
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
@@ -82,6 +86,9 @@ export class AppListsComponent {
     }
     return;
   }
+  formulario: any[] =[
+    {id: 1, a:'row', b:'col-6' , c:'100%', d:'Tipo de Documento', e:'option', f:'DNI', g:'option', h:'Carnet de extranjería', i:'option', j:'Pasaporte',}
+  ];
   
-  
+
 }
