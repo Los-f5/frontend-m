@@ -19,8 +19,8 @@ export class AppAlerta {
 export class AppListsComponent {
   
   holi: string;
-  checked = false;
-  date = new FormControl(new Date());
+  checked = false; checked2 = false; checked3 = false; checked4 = false; checked5 = false;
+  checked6 = false; checked7 = false; checked8 = false; checked9 = false; checked1 = false;
   serializedDate = new FormControl(new Date().toISOString());
   
   constructor(public dialog: MatDialog) {}
@@ -42,59 +42,397 @@ export class AppListsComponent {
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  }email1 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage1() {
+    if (this.email1.hasError('required')) {
+      return 'You must enter a value';
+    }
 
-  dni = new FormControl('');
-  nom = new FormControl('');
-  ape = new FormControl('');
-  telf = new FormControl('');
-  dir = new FormControl('');
-  hora = new FormControl('');
+    return this.email1.hasError('email') ? 'Not a valid email' : '';
+  }email2 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage2() {
+    if (this.email2.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email2.hasError('email') ? 'Not a valid email' : '';
+  }email3 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage3() {
+    if (this.email3.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email3.hasError('email') ? 'Not a valid email' : '';
+  }email4 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage4() {
+    if (this.email4.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email4.hasError('email') ? 'Not a valid email' : '';
+  }email5 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage5() {
+    if (this.email5.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email5.hasError('email') ? 'Not a valid email' : '';
+  }email6 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage6() {
+    if (this.email6.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email6.hasError('email') ? 'Not a valid email' : '';
+  }email7 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage7() {
+    if (this.email7.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email7.hasError('email') ? 'Not a valid email' : '';
+  }email8 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage8() {
+    if (this.email8.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email8.hasError('email') ? 'Not a valid email' : '';
+  }email9 = new FormControl('', [Validators.required, Validators.email]);
+  getErrorMessage9() {
+    if (this.email9.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email9.hasError('email') ? 'Not a valid email' : '';
+  }
+  dni = new FormControl(''); dni2 = new FormControl(''); dni4 = new FormControl(''); dni6 = new FormControl(''); dni8 = new FormControl('');
+  dni1 = new FormControl(''); dni3 = new FormControl(''); dni5 = new FormControl(''); dni7 = new FormControl(''); dni9 = new FormControl('');
   getdni(){
     if (this.dni.hasError('required')){
       return 'Este campo es obligatorio';
     }
     return;
+  }getdni1(){
+    if (this.dni1.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni2(){
+    if (this.dni2.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni3(){
+    if (this.dni3.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni4(){
+    if (this.dni4.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni5(){
+    if (this.dni5.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni6(){
+    if (this.dni6.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni7(){
+    if (this.dni7.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni8(){
+    if (this.dni8.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdni9(){
+    if (this.dni9.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
   }
+  nom = new FormControl(''); nom2 = new FormControl(''); nom4 = new FormControl(''); nom6 = new FormControl(''); nom8 = new FormControl('');
+  nom1 = new FormControl(''); nom3 = new FormControl(''); nom5 = new FormControl(''); nom7 = new FormControl(''); nom9 = new FormControl('');
   getnom(){
-    if (this.dni.hasError('required')){
+    if (this.nom.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom1(){
+    if (this.nom1.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom2(){
+    if (this.nom2.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom3(){
+    if (this.nom3.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom4(){
+    if (this.nom4.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom5(){
+    if (this.nom5.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom6(){
+    if (this.nom6.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom7(){
+    if (this.nom7.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom8(){
+    if (this.nom8.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getnom9(){
+    if (this.nom9.hasError('required')){
       return 'Este campo es obligatorio';
     }
     return;
   }
+  ape = new FormControl(''); ape2 = new FormControl(''); ape4 = new FormControl(''); ape6 = new FormControl(''); ape8 = new FormControl('');
+  ape1 = new FormControl(''); ape3 = new FormControl(''); ape5 = new FormControl(''); ape7 = new FormControl(''); ape9 = new FormControl('');
   getape(){
-    if (this.dni.hasError('required')){
+    if (this.ape.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape1(){
+    if (this.ape1.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape2(){
+    if (this.ape2.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape3(){
+    if (this.ape3.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape4(){
+    if (this.ape4.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape5(){
+    if (this.ape5.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape6(){
+    if (this.ape6.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape7(){
+    if (this.ape7.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape8(){
+    if (this.ape8.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getape9(){
+    if (this.ape9.hasError('required')){
       return 'Este campo es obligatorio';
     }
     return;
   }
+  telf = new FormControl(''); telf2 = new FormControl(''); telf4 = new FormControl(''); telf6 = new FormControl(''); telf8 = new FormControl('');
+  telf1 = new FormControl(''); telf3 = new FormControl(''); telf5 = new FormControl(''); telf7 = new FormControl(''); telf9 = new FormControl('');
   gettelf(){
-    if (this.dni.hasError('required')){
+    if (this.telf.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf1(){
+    if (this.telf1.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf2(){
+    if (this.telf2.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf3(){
+    if (this.telf3.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf4(){
+    if (this.telf4.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf5(){
+    if (this.telf5.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf6(){
+    if (this.telf6.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf7(){
+    if (this.telf7.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf8(){
+    if (this.telf8.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gettelf9(){
+    if (this.telf9.hasError('required')){
       return 'Este campo es obligatorio';
     }
     return;
   }
+  dir = new FormControl(''); dir2 = new FormControl(''); dir4 = new FormControl(''); dir6 = new FormControl(''); dir8 = new FormControl('');
+  dir1 = new FormControl(''); dir3 = new FormControl(''); dir5 = new FormControl(''); dir7 = new FormControl(''); dir9 = new FormControl('');
   getdir(){
-    if (this.dni.hasError('required')){
+    if (this.dir.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir1(){
+    if (this.dir1.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir2(){
+    if (this.dir2.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir3(){
+    if (this.dir3.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir4(){
+    if (this.dir4.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir5(){
+    if (this.dir5.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir6(){
+    if (this.dir6.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir7(){
+    if (this.dir7.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir8(){
+    if (this.dir8.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }getdir9(){
+    if (this.dir9.hasError('required')){
       return 'Este campo es obligatorio';
     }
     return;
   }
+  hora = new FormControl(''); hora2 = new FormControl(''); hora4 = new FormControl(''); hora6 = new FormControl(''); hora8 = new FormControl('');
+  hora1 = new FormControl(''); hora3 = new FormControl(''); hora5 = new FormControl(''); hora7 = new FormControl(''); hora9 = new FormControl('');
   gethora(){
-    if (this.dni.hasError('required')){
+    if (this.hora.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora1(){
+    if (this.hora1.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora2(){
+    if (this.hora2.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora3(){
+    if (this.hora3.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora4(){
+    if (this.hora4.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora5(){
+    if (this.hora5.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora6(){
+    if (this.hora6.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora7(){
+    if (this.hora7.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora8(){
+    if (this.hora8.hasError('required')){
+      return 'Este campo es obligatorio';
+    }
+    return;
+  }gethora9(){
+    if (this.hora9.hasError('required')){
       return 'Este campo es obligatorio';
     }
     return;
   }
-  formulario: any[] =[
-    {id: 1, a:'row', b:'col-6' , c:'100%', d:'Tipo de Documento', e:'option', f:'DNI', g:'option', h:'Carnet de extranjería', i:'option', j:'Pasaporte',}
-  ];
-  
+  promocion = 0;
+  precio = 180;
   mostrar1: boolean = false;
   botonm1: boolean = true;
   botono1: boolean = false;
   botono: boolean= true;
   aea: number= 1;
+  cer: string = "0";
+
   mostrarocultar1(){
     if(this.mostrar1){
       this.mostrar1=false;
@@ -265,13 +603,15 @@ export class AppListsComponent {
       this.botonm9=true;
       this.botona=false;
       this.aea--;
+      this.cer = "0";
     }else{
       this.mostrar9=true;
       this.botono8=false;
       this.botono9=true;
       this.botonm9=false;
       this.botona=true;
-      this.aea++; 
+      this.aea++;
+      this.cer = "";
     }
   }
 }
