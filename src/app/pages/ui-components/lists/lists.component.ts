@@ -22,7 +22,38 @@ export class AppListsComponent {
   checked = false; checked2 = false; checked3 = false; checked4 = false; checked5 = false;
   checked6 = false; checked7 = false; checked8 = false; checked9 = false; checked1 = false;
   serializedDate = new FormControl(new Date().toISOString());
-  
+
+  botones: boolean[] = [true, true, true, true, true, true, true, true, true, true];
+  contador: number = 1; // Valor inicial del contador
+
+agregarPanel() {
+  if (this.contador < 11) {
+    this.contador++;
+  }
+}
+
+eliminarPanel() {
+  if (this.contador > 1) {
+    this.contador--;
+  }
+}
+
+getRange() {
+  return Array.from({ length: this.contador }, (_, i) => i);
+}
+
+  mostrarocultar(index: number) {
+    if (index === -1) {
+      // Lógica para el botón "Agregar"
+    if (this.botones.length < 10) {
+      this.botones.push(true); // Agrega un nuevo elemento al arreglo
+    }
+    } else {
+      // Lógica para los botones "-" y "+"
+    this.botones[index] = !this.botones[index];
+    }
+  }
+
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
@@ -32,6 +63,7 @@ export class AppListsComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
+  
   
   panelOpenState = false;
   
