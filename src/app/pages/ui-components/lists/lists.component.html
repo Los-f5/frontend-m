@@ -3,20 +3,121 @@
   <div class="col-md-8">
     <div class="border border-dark rounded-pill d-flex p-2 my-3" style="margin-left: 82%;">
       <button mat-mini-fab style="width: 25%; height: 100%;" (click)="eliminarPanel()">-</button>
-      <div style="margin-left: 16%; margin-right: 16%;">{{ contador }}</div>
+      <div style="margin-left: 16%; margin-right: 16%;">{{ getFormattedNumber(contador - 1) }}</div>
       <button mat-mini-fab style="width: 25%; height: 100%;" (click)="agregarPanel()">+</button>
     </div>
-   
-    
+
     <mat-accordion>
       <ng-container *ngFor="let i of getRange()">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              Datos del participante - {{ i + 1 }}
+            <mat-panel-title class="fw-bold">
+              Datos del participante - {{ (i + 1) }}
             </mat-panel-title>
           </mat-expansion-panel-header>
           <!-- Contenido del panel -->
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%">
+                <mat-label>Tipo de documento</mat-label>
+                <mat-select>
+                  <mat-option value="option">DNI</mat-option>
+                  <mat-option value="option">Carnet de extranjería</mat-option>
+                  <mat-option value="option">Pasaporte</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                <mat-form-field style="width: 100%">
+                  <mat-label>Nr. Documento</mat-label>
+                  <input matInput required />
+                  <mat-error></mat-error>
+                </mat-form-field>
+                <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </div>
+              </div>
+              <div>
+              
+              </div>
+            </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%">
+                <mat-label>Nombres</mat-label>
+                <input matInput required />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%">
+                <mat-label>Apellidos</mat-label>
+                <input matInput required />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%">
+                <mat-label>Teléfono</mat-label>
+                <input matInput required />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%">
+                <mat-label>Dirección</mat-label>
+                <input matInput required />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput placeholder="pat@example.com" required />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <mat-form-field style="width: 100%">
+                <mat-label>Hora</mat-label>
+                <input matInput required type="time" />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-3">
+              <button
+                mat-raised-button
+                style="
+                  background-color: deepskyblue;
+                  color: white;
+                  margin-top: 7%;
+                  width: 100%;
+                "
+              >
+                Hora de volar
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-checkbox
+                class="example-margin"
+                [(ngModel)]="checked"
+                (click)="openDialog()"
+                >Aceptar Reconocimiento y Suposición de Riesgos</mat-checkbox
+              >
+            </div>
+            <div class="col-md-6">
+              <div class="">
+                <input class="form-control" type="file" id="formFile" />
+              </div>
+            </div>
+          </div>
         </mat-expansion-panel>
       </ng-container>
     </mat-accordion>
@@ -36,46 +137,64 @@
           </mat-list-item>
           <div class="row my-3">
             <div class="fw-bold fs-5 col-9 ms-3">Compra</div>
-            <div class="col-1" style="margin-left: -3%;">
-              <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">{{cer}}{{aea}}</button>
+            <div class="col-1" style="margin-left: -3%">
+              <button
+                mat-mini-fab
+                color="accent"
+                aria-label="Example icon button with a plus one icon"
+              >{{ contador }} </button>
             </div>
           </div>
           <div class="row my-3">
             <div class="col-8 ms-3">Precio</div>
             <div class="col-3">
-              <div class="border border-dark rounded text-center" style="width: 100%; margin-left: 19%;">{{precio}}</div>
+              <input [(ngModel)]="precio" type="number" class="w-100 ms-2">
             </div>
           </div>
           <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
               <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Codigo promocional
-                </mat-panel-title>
+                <mat-panel-title> Codigo promocional </mat-panel-title>
               </mat-expansion-panel-header>
               <div class="row">
                 <div class="col-8">
-                  <input type="text" style="height: 80%; width: 100%;">
+                  <input type="text" style="height: 80%; width: 100%" />
                 </div>
                 <div class="col-2">
-                  <button mat-button
-                    style="margin-top: -20%; margin-left: -80%; background-color: deepskyblue; height: 80%;">Continuar</button>
+                  <button
+                    mat-button
+                    style="
+                      margin-top: -20%;
+                      margin-left: -80%;
+                      background-color: deepskyblue;
+                      height: 80%;
+                    "
+                  >
+                    Continuar
+                  </button>
                 </div>
               </div>
-
             </mat-expansion-panel>
           </mat-accordion>
           <mat-list-item class="mt-2">
             <span matListItemTitle class="row">
-              <div class="col-5">Total</div>
+              <div class="col-5 fw">Total</div>
               <div class="col-7">
-                <div class="text-end">S/. {{precio * aea}}</div>
-                <div class="text-end">PEN</div>
+                <div class="text-end fw-bold" >S/. {{precio * contador}}</div>
+                <div class="text-end fw-bold">PEN</div>
               </div>
             </span>
           </mat-list-item>
         </mat-list>
-        <button mat-button style="margin-left: 35%; background-color: deepskyblue;">Continuar</button>
+        <button
+          mat-button
+          style="margin-left: 35%; background-color: deepskyblue"
+        >
+          <h6 class=" text-white fw-bold" > Continuar</h6>
+        </button>
       </mat-card-content>
     </mat-card>
   </div>
