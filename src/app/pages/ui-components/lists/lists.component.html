@@ -16,6 +16,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <!-- Contenido del panel -->
+          <div class="form"> 
           <div class="row">
             <div class="col-md-6">
               <mat-form-field style="width: 100%">
@@ -118,6 +119,7 @@
               </div>
             </div>
           </div>
+        </div>
         </mat-expansion-panel>
       </ng-container>
     </mat-accordion>
@@ -181,7 +183,7 @@
           </mat-accordion>
           <mat-list-item class="mt-2">
             <span matListItemTitle class="row">
-              <div class="col-5 fw">Total</div>
+              <div class="col-5 fw-bold">Total</div>
               <div class="col-7">
                 <div class="text-end fw-bold" >S/. {{precio * contador}}</div>
                 <div class="text-end fw-bold">PEN</div>
