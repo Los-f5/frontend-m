@@ -109,7 +109,7 @@
               <mat-checkbox
                 class="example-margin"
                 [(ngModel)]="checked"
-                (click)="openDialog()"
+                
                 >Aceptar Reconocimiento y Suposición de Riesgos</mat-checkbox
               >
             </div>
@@ -199,5 +199,21 @@
         </button>
       </mat-card-content>
     </mat-card>
+  </div>
+</div>
+
+
+<div class="calendar-container">
+  <div class="date-picker">
+    <label for="date">Select a date:</label>
+    <input type="date" id="date" [(ngModel)]="selectedDate" (change)="updateAvailableHours()" />
+  </div>
+  
+  <div class="hour-picker" *ngIf="selectedDate">
+    <label for="hour">Select an available hour:</label>
+    <select id="hour" [(ngModel)]="selectedHour">
+      <option *ngFor="let hour of availableHours" [value]="hour">{{ hour }}</option>
+    </select>
+    <button class="select-button" (click)="selectHour(selectedHour)">Select</button>
   </div>
 </div>

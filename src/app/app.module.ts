@@ -6,6 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
@@ -48,6 +53,9 @@ import { AuthButtonComponent } from './pages/authentication/auth-button/auth-but
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
     TablerIconsModule.pick(TablerIcons),
 
     // Import the module into the application, with configuration

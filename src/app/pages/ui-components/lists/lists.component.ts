@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 
+import { FormGroup, FormBuilder } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-alerta',
@@ -27,6 +29,61 @@ export class AppListsComponent {
   @Input()
   precio: number=180;
   
+  myForm: FormGroup;
+
+
+  selectedDate: Date;
+  selectedHour: string;
+  occupiedHours: Date[] = [];
+
+  availableHours: string[] = [];
+
+  constructor( ) {
+
+    this.selectedDate = new Date();
+    this.updateAvailableHours();
+
+  }
+
+
+  updateAvailableHours() {
+    const startHour = moment(this.selectedDate).hour(9).minute(0);
+    const endHour = moment(this.selectedDate).hour(17).minute(0);
+
+    const interval = 30;
+    const hours = [];
+
+    let currentHour = startHour.clone();
+    while (currentHour.isSameOrBefore(endHour)) {
+      const hourStr = currentHour.format('HH:mm');
+
+      if (!this.isHourOccupied(currentHour)) {
+        hours.push(hourStr);
+      }
+
+      currentHour.add(interval, 'minutes');
+    }
+
+    this.availableHours = hours;
+  }
+
+  isHourOccupied(hour: moment.Moment): boolean {
+    return this.occupiedHours.some(occupiedHour => {
+      return moment(occupiedHour).isSame(hour, 'minute');
+    });
+  }
+
+  selectHour(hour: string) {
+    const selectedDateTime = moment(this.selectedDate)
+      .hour(Number(hour.substring(0, 2)))
+      .minute(Number(hour.substring(3)));
+
+    this.occupiedHours.push(selectedDateTime.toDate());
+    this.updateAvailableHours();
+  }
+
+  
+  
 agregarPanel() {
   if (this.contador < 11) {
     this.contador++;
@@ -48,15 +105,10 @@ getRange() {
 
 
 
-  constructor(public dialog: MatDialog) {}
+  
+  
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AppAlerta);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  
   
   
   panelOpenState = false;
