@@ -34,6 +34,8 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './pages/authentication/auth-button/auth-button.component';
 
+import { DateTimePickerModalComponent } from './pages/ui-components/lists/DateTimePickerModal/DateTimePickerModal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { AuthButtonComponent } from './pages/authentication/auth-button/auth-but
     HeaderComponent,
     BrandingComponent,
     AppNavItemComponent,
-      AuthButtonComponent
+      AuthButtonComponent,
+      DateTimePickerModalComponent
    ],
   imports: [
     BrowserModule,

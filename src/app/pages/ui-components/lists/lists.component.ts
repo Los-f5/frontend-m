@@ -1,14 +1,29 @@
-import {Component, Input} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  Inject,
+  OnDestroy,
+} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
+import { style } from '@angular/animations';
+
+import { DateTimePickerModalComponent } from './DateTimePickerModal/DateTimePickerModal.component';
+
+import { DateTimeService } from 'src/app/services/date-time.service';
 
 @Component({
   selector: 'app-alerta',
   templateUrl: './alerta.html',
+  styleUrls: ['./list.component.scss'],
 })
+
+
 
 export class AppAlerta {
   checked = false;
@@ -32,57 +47,42 @@ export class AppListsComponent {
   myForm: FormGroup;
 
 
-  selectedDate: Date;
-  selectedHour: string;
-  occupiedHours: Date[] = [];
+  selectedDateTime: Date;
+  selectedTimeHour: string;
+  selectedTimeMinute: string;
 
-  availableHours: string[] = [];
+  availableHours: string[] = ['8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'];
+  availableMinutes: string[] = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
 
-  constructor( ) {
+  formattedDateTime: string;
 
-    this.selectedDate = new Date();
-    this.updateAvailableHours();
+  constructor(private dialog: MatDialog , public  dateTimeService: DateTimeService ) {
+  
+    this.selectedDateTime = new Date();
 
   }
 
 
-  updateAvailableHours() {
-    const startHour = moment(this.selectedDate).hour(9).minute(0);
-    const endHour = moment(this.selectedDate).hour(17).minute(0);
 
-    const interval = 30;
-    const hours = [];
+  openDateTimePickerModal(): void {
+    const dialogRef = this.dialog.open(DateTimePickerModalComponent, {
+      width: '500px',
+      data: this.selectedDateTime
+    });
 
-    let currentHour = startHour.clone();
-    while (currentHour.isSameOrBefore(endHour)) {
-      const hourStr = currentHour.format('HH:mm');
-
-      if (!this.isHourOccupied(currentHour)) {
-        hours.push(hourStr);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.selectedDateTime = result;
       }
-
-      currentHour.add(interval, 'minutes');
-    }
-
-    this.availableHours = hours;
-  }
-
-  isHourOccupied(hour: moment.Moment): boolean {
-    return this.occupiedHours.some(occupiedHour => {
-      return moment(occupiedHour).isSame(hour, 'minute');
     });
   }
 
-  selectHour(hour: string) {
-    const selectedDateTime = moment(this.selectedDate)
-      .hour(Number(hour.substring(0, 2)))
-      .minute(Number(hour.substring(3)));
-
-    this.occupiedHours.push(selectedDateTime.toDate());
-    this.updateAvailableHours();
+  updateDateTime(dateTime: Date): void {
+    this.dateTimeService.updateDateTime(dateTime);
   }
-
   
+  
+
   
 agregarPanel() {
   if (this.contador < 11) {
@@ -113,5 +113,9 @@ getRange() {
   
   panelOpenState = false;
   
+
+
+
+
 
 }

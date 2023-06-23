@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Choose Date and Time</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDateTime" (ngModelChange)="onDateTimeChange()">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Time</mat-label>
+    <mat-select [(ngModel)]="selectedTimeHour" (ngModelChange)="onHourChange()">
+      <mat-option *ngFor="let hour of availableHours" [value]="hour">{{ hour }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Minutes</mat-label>
+    <mat-select [(ngModel)]="selectedTimeMinute" [disabled]="!selectedTimeHour" (ngModelChange)="onDateTimeChange()">
+      <mat-option *ngFor="let minute of availableMinutes" [value]="minute">{{ minute }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="selectedDateTime" cdkFocusInitial>OK</button>
+</div>

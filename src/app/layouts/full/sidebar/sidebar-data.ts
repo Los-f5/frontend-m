@@ -6,7 +6,7 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Perfil',
-    iconName: 'rosette',
+    iconName: 'user-circle',
     route: '/ui-components/badge',
   },
 
@@ -17,25 +17,25 @@ export const navItems: NavItem[] = [
   
   {
     displayName: 'Estadistica',
-    iconName: 'layout-dashboard',
+    iconName: 'chart-arrows-vertical',
     route: '/dashboard',
   },
 
   {
     displayName: 'Agregar Clientes',
-    iconName: 'list',
+    iconName: 'users-plus',
     route: '/ui-components/lists',
   },
 
   {
     displayName: 'Vuelos Agendados',
-    iconName: 'poker-chip',
+    iconName: 'calendar-stats',
     route: '/ui-components/chips',
   },
   
   {
     displayName: 'Vuelos Realizados',
-    iconName: 'layout-navbar-expand',
+    iconName: 'calendar-bolt',
     route: '/ui-components/menu',
   },
   {

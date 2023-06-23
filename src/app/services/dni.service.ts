@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Userdni } from '../Interfaces/userdni'; 
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,12 @@ export class ReniecService{
  
 
   constructor(private httpClient: HttpClient) {}
-    
-  public usuario(usuariodni : Userdni ): Observable<any>{
+   // 
+  //public usuario(usuariodni : Userdni ): Observable<any>{
        
-        return this.httpClient.get(this.num + usuariodni.dni +this.token1);
+ //       return this.httpClient.get(this.num + usuariodni.dni +this.token1);
 
-    }
+  //  }
   
   
   
