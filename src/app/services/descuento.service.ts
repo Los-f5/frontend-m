@@ -10,7 +10,7 @@ export class DescuentoService{
 
 
   listurl = 'http://172.24.253.24:8083/v1/descuento';
-  addurl  = 'http://172.24.253.24:8083/v1/descuento'
+  addurl  = 'http://172.24.253.24:8083/v1/descuento';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -20,9 +20,10 @@ export class DescuentoService{
   }
 
 
-  public agregarDescuento(agregardesc: Descuento): Observable<any> {
+  public postDescuento(agregardesc: Descuento): Observable<any> {
     console.log(agregardesc);
     return this.httpClient.post<any>(this.addurl , agregardesc);
   }
 
+  
 }

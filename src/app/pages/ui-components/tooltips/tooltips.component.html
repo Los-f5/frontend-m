@@ -1,95 +1,92 @@
 <h4>REGISTRAR UN NUEVO DESCUENTO</h4>
 <br />
 <div class="row">
-  <div class="col-7">
+  <div class="col-md-7">
     <mat-card class="cardWithShadow theme-card">
       <mat-card-header>
-        <mat-card-title class="m-b-0 text-center ms-md-4"
-          >AGREGAR DESCUENTO</mat-card-title
-        >
+        <mat-card-title class="m-b-0 text-center ms-md-5">AGREGAR DESCUENTO</mat-card-title>
       </mat-card-header>
-      <form [formGroup]="myForm" (submit)="submitForm()">
+      <form [formGroup]="myForm"s (submit)="submitForm()" class="text-center">
         <div class="row">
-          <div class="col-6">
+          <div class="col-md-6">
             <!--file one -->
             <mat-form-field class="ms-md-5 w-75">
-              <mat-label>Ingresa un nuevo codigo</mat-label>
+              <mat-label>Ingresa un nuevo código</mat-label>
               <input matInput formControlName="name" [(ngModel)]="list_desc.descuento_nombre" required />
-              <mat-error>Coloca el codigo </mat-error>
+    
             </mat-form-field>
           </div>
-
-          <div class="col-6">
+  
+          <div class="col-md-6">
             <mat-form-field class="w-75">
               <mat-label>Ingresa el Porcentaje</mat-label>
-              <input matInput formControlName="porcentaje" [(ngModel)]="list_desc.descuento"  required  />
-              <mat-error>Coloca el porcentaje </mat-error>
+              <input matInput formControlName="porcentaje" [(ngModel)]="list_desc.descuento" required />
+              
             </mat-form-field>
           </div>
         </div>
-
+  
         <!-- file two-->
-
+  
         <div class="row mt-2">
-          <div class="col-6">
-            <!-- -->
-            <mat-form-field class="ms-md-5 w-75">
+          <div class="col-md-6">
+
+           <!-- <mat-form-field class="example-full-width" appearance="fill" class="ms-md-5 w-75">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="list_desc.fecha_inicio">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+            
+            <input type="date" [(ngModel)]="list_desc.fecha_inicio">
+
+            <!-- 
+            <mat-form-field class="ms-md-5 w-75" appearance="fill">
               <mat-label>Fecha de inicio</mat-label>
-              <input
-                matInput
-                [matDatepicker]="startDatePicker"
-                formControlName="startDate"
+              <input matInput [matDatepicker]="dp" formControlName="startDate" [(ngModel)]="list_desc.fecha_inicio" required />
+              <mat-hint>{{getDateFormatString()}}</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+            </mat-form-field> -->
+          </div>
+     
+         
 
-                [(ngModel)]="list_desc.fecha_inicio" 
-                required
+          <div class="col-md-6">
 
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="startDatePicker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #startDatePicker></mat-datepicker>
-            </mat-form-field>
+            <input type="date" [(ngModel)]="list_desc.fecha_final ">
+
+           <!-- <mat-form-field class="example-full-width" appearance="fill" class=" w-75">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="list_desc.fecha_final">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+
+            
           </div>
 
-          <div class="col-6">
-            <mat-form-field class="w-75">
-              <mat-label>Fecha de fin</mat-label>
-              <input
-                matInput
-                [matDatepicker]="endDatePicker"
-                formControlName="endDate"
-                [(ngModel)]="list_desc.fecha_final"
-                required
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="endDatePicker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #endDatePicker></mat-datepicker>
-            </mat-form-field>
-          </div>
+          <input matInput type="number"  [(ngModel)]="list_desc.estado" required >
+
+
+          
+
         </div>
         <div class="row">
-          <div class="col-4"></div>
-          <div class="col-8">
-            <button 
-              mat-raised-button
-              class="text-bg-info btn-debug mb-4 mt-2"
-              type="submit"
-              (click)="registrarDescuento()"
-            >
-              <p class="text-white text-md-center mt-3">
-                Agregar Nuevo Descuento
-              </p>
-            </button>
+          <div class="col-md-12 text-center">
+            <button mat-raised-button class="text-bg-info btn-debug mb-4 mt-2" type="submit" (click)="submitForm(); registrarDescuento()">
+              <p class="text-white text-md-center mt-3">Agregar Nuevo Descuento</p>
+            </button>            
           </div>
         </div>
       </form>
     </mat-card>
   </div>
+  
 
-  <div class="col-5">
+  <div class="col-md-5">
     <mat-card class="cardWithShadow theme-card">
       <mat-card-header>
         <mat-card-title class="m-b-0">LISTA DE DESCUENTO</mat-card-title>
@@ -121,3 +118,4 @@
     </mat-card>
   </div>
 </div>
+
