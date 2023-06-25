@@ -3,7 +3,7 @@ import { FormControl , Validators, FormGroup, FormBuilder} from '@angular/forms'
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DescuentoService } from 'src/app/services/descuento.service';
-import { Descuento } from 'src/app/interface/Descuento';
+import { DescuentoNuevo} from 'src/app/interface/DescuentoNuevo';
 
 import Swal from 'sweetalert2';
 
@@ -27,15 +27,39 @@ import 'moment/locale/fr';
 })
 
 
+
+
 export class AppTooltipsComponent implements OnInit {
 
 
+
+  onDescuentoNew():void {
+
+
+
+    this.descuentoNuevo = new DescuentoNuevo(this.descuento_nombre,this.descuento, this.fecha_inicio, this.fecha_final)
+
+    this.descuentoService.postDescuento(this.descuentoNuevo).subscribe(
+      data => {
+        console.log(data)
+
+      }
+
+
+
+    )
+
+
+
+  }
+
+  descuentoNuevo : DescuentoNuevo;
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
   };
-  
+
   //  disabled
   disabled = new FormControl(false);
 
@@ -45,31 +69,29 @@ export class AppTooltipsComponent implements OnInit {
 
   // change message
   message = new FormControl('Info about the action');
-  // form 
+  // form
 
 
 
-  //form apis 
+  //form apis
   myForm: FormGroup;
 
-  //variable de list descuento 
+  //variable de list descuento
 
-  list_desc: Descuento = new Descuento('', '', '', '', '', '');
-  
 
-  descuentos: Descuento[] = [];
 
-  desc: Descuento;
-  data_authority: number = 1;
 
+  descuentos: any;
   //
+  // desc: Descuento;
+  // data_authority: number = 1;
 
-  id: string;
-  descuento_nombre: string;
-  descuento : string; 
-  fecha_inicio: string; 
-  fecha_final: string; 
-  estado: string;
+
+
+  descuento : string;
+  descuento_nombre : string;
+  fecha_inicio: string;
+  fecha_final: string;
 
   constructor(private formBuilder: FormBuilder , private descuentoService: DescuentoService, private router: Router) {
 
@@ -87,13 +109,13 @@ export class AppTooltipsComponent implements OnInit {
   }
 
 
- 
+
   // list descuento
   getDescuentos() {
     this.descuentoService.getDescuento().subscribe(
       (resp: any) => {
         this.descuentos = resp.data;
-        console.log(this.descuentos); 
+        console.log(this.descuentos);
       },
       error => {
         console.log(error);
@@ -101,28 +123,33 @@ export class AppTooltipsComponent implements OnInit {
     );
   }
 
-  // agregar descuento 
-
-  registrarDescuento(): void {
+  // agregar descuento
 
 
-    this.desc = new Descuento( 
-      this.id, this.descuento_nombre, this.descuento , this.fecha_inicio , this.fecha_final,
-      this.estado);
-
-    this.descuentoService.postDescuento(this.desc).subscribe(
-      data => {
-
-      },
-      err => {
 
 
-        console.log(err);
-      }
-    );
 
 
-  }
+  // registrarDescuento(): void {
+  //
+  //
+  //   this.desc = new Descuento(
+  //     this.id, this.descuento_nombre, this.descuento , this.fecha_inicio , this.fecha_final,
+  //     this.estado);
+  //
+  //   this.descuentoService.postDescuento(this.desc).subscribe(
+  //     data => {
+  //
+  //     },
+  //     err => {
+  //
+  //
+  //       console.log(err);
+  //     }
+  //   );
+  //
+  //
+  // }
 
 
    /* registrarDescuento(){
@@ -143,13 +170,13 @@ export class AppTooltipsComponent implements OnInit {
           'Felicidades',
           'success'
         )
-        this.getDescuentos(); 
-           
-        this.list_desc.descuento_nombre = ''; 
+        this.getDescuentos();
+
+        this.list_desc.descuento_nombre = '';
         this.list_desc.descuento = '';
         this.list_desc.fecha_inicio = '';
         this.list_desc.fecha_final = '';
-        
+
       },
       error: () => {
         Swal.fire(
@@ -161,19 +188,19 @@ export class AppTooltipsComponent implements OnInit {
     })
   }
 
-  
+
    */
   onSubmit() {
     if (this.myForm.valid) {
       const formData = this.myForm.value;
-      
+
     }
   }
-  
+
   get name() {
     return this.myForm.get('name');
   }
-  
+
   get porcentaje() {
     return this.myForm.get('email');
   }
@@ -186,5 +213,5 @@ export class AppTooltipsComponent implements OnInit {
   }
 
 
-  
+
 }

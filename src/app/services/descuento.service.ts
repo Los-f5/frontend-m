@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Descuento } from '../interface/Descuento';
+import { DescuentoNuevo } from '../interface/DescuentoNuevo';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,14 +16,14 @@ export class DescuentoService{
 
   public getDescuento(): Observable<any>{
 
-        return this.httpClient.get(this.listurl);     
+        return this.httpClient.get(this.listurl);
   }
 
 
-  public postDescuento(agregardesc: Descuento): Observable<any> {
+  public postDescuento(agregardesc: DescuentoNuevo): Observable<any> {
     console.log(agregardesc);
     return this.httpClient.post<any>(this.addurl , agregardesc);
   }
 
-  
+
 }
