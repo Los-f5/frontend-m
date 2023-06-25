@@ -59,7 +59,7 @@
           <div class="col-md-6">
 
             <input matInput [matDatepicker]="picker1" class="form-control form-control-sm" [(ngModel)]="fecha_final" name="fecha_final">
-            <mat-hint>MM/DD/YYYY</mat-hint>
+           
             <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
 
@@ -111,7 +111,7 @@
         <tbody>
           <tr *ngFor="let des of descuentos">
             <th scope="row" class="text-center">{{ des.id }}</th>
-            <td class="text-center">{{ des.descuento }}</td>
+            <td class="text-center">{{ des.descuento_nombre }}</td>
             <td class="text-center">{{ des.descuento }}</td>
             <td class="text-center">{{ des.fecha_inicio }}</td>
             <td class="text-center">{{ des.fecha_final }}</td>

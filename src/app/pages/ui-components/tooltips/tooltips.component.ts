@@ -33,25 +33,7 @@ export class AppTooltipsComponent implements OnInit {
 
 
 
-  onDescuentoNew():void {
-
-
-
-    this.descuentoNuevo = new DescuentoNuevo(this.descuento_nombre,this.descuento, this.fecha_inicio, this.fecha_final)
-
-    this.descuentoService.postDescuento(this.descuentoNuevo).subscribe(
-      data => {
-        console.log(data)
-
-      }
-
-
-
-    )
-
-
-
-  }
+  
 
   descuentoNuevo : DescuentoNuevo;
   myFilter = (d: Date | null): boolean => {
@@ -126,6 +108,26 @@ export class AppTooltipsComponent implements OnInit {
   // agregar descuento
 
 
+  onDescuentoNew():void {
+
+
+
+    this.descuentoNuevo = new DescuentoNuevo(this.descuento_nombre,this.descuento, this.fecha_inicio, this.fecha_final)
+
+    this.descuentoService.postDescuento(this.descuentoNuevo).subscribe(
+      data => {
+        this.getDescuentos();
+
+      }
+
+
+
+    )
+
+
+
+  }
+  
 
 
 
