@@ -18,6 +18,15 @@ import { AppMenuComponent } from './menu/menu.component';
 import { AppTooltipsComponent } from './tooltips/tooltips.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { DateTimePickerModalComponent } from './lists/DateTimePickerModal/DateTimePickerModal.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +36,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
+    NgbDatepickerModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule
+    
+
   ],
   declarations: [
     AppBadgeComponent,
@@ -34,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppListsComponent,
     AppAlerta,
     AppMenuComponent,
-    AppTooltipsComponent
+    AppTooltipsComponent,
+    DateTimePickerModalComponent
   ],
 })
 export class UicomponentsModule {}

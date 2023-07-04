@@ -1,24 +1,32 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   Input,
-  Inject,
-  OnDestroy,
+  ViewChild,
+  ElementRef 
 } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+
 import {MatDialog} from '@angular/material/dialog';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
-import * as moment from 'moment';
-import { style } from '@angular/animations';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { DateTimePickerModalComponent } from './DateTimePickerModal/DateTimePickerModal.component';
 
 import { DateTimeService } from 'src/app/services/date-time.service';
 
+import { ClienteNuevo } from 'src/app/interface/ClienteNuevo';
+import { ClienteService } from 'src/app/services/cliente.service';
+
+import { Reniec } from 'src/app/interface/Reniec';
+import { personareniecservice } from 'src/app/services/personareniec.service';
+
+import { Buscarperson } from 'src/app/interface/Buscarperson';
+
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-alerta',
+  
   templateUrl: './alerta.html',
   styleUrls: ['./list.component.scss'],
 })
@@ -32,13 +40,13 @@ export class AppAlerta {
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
+  styleUrls: ['./list.component.scss'],
 })
 export class AppListsComponent {
   
-  holi: string;
-  checked = false; checked2 = false; checked3 = false; checked4 = false; checked5 = false;
-  checked6 = false; checked7 = false; checked8 = false; checked9 = false; checked1 = false;
-  serializedDate = new FormControl(new Date().toISOString());
+ 
+
+
 
   contador: number = 1; // Valor inicial del contador
   @Input()
@@ -47,42 +55,43 @@ export class AppListsComponent {
   myForm: FormGroup;
 
 
+
   selectedDateTime: Date;
-  selectedTimeHour: string;
-  selectedTimeMinute: string;
 
-  availableHours: string[] = ['8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'];
-  availableMinutes: string[] = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
+ //variables de cliente
 
-  formattedDateTime: string;
+ clienteNuevo : ClienteNuevo;
 
-  constructor(private dialog: MatDialog , public  dateTimeService: DateTimeService ) {
-  
-    this.selectedDateTime = new Date();
+  id: Number;
+  nombre : string;
+  apellido_materno: string;
+  apellido_paterno: string;
+  fechaNacimiento: string;
+  fecha_reserva: string;
+  identificacion: string;
+  direccion: string;
+  telefono: string;
+  correo: string;
+  estado: string;
 
-  }
+
+  nombres_pers: string;
+  apellido_pat: string;
+  apellido_mat: string;
+
+  dni:string;
+
+ 
+
+  constructor(private dialog: MatDialog , 
+    public  dateTimeService: DateTimeService , 
+    private clienteService : ClienteService , 
+    private router: Router, 
+    private reniecservice: personareniecservice) { }
 
 
 
-  openDateTimePickerModal(): void {
-    const dialogRef = this.dialog.open(DateTimePickerModalComponent, {
-      width: '500px',
-      data: this.selectedDateTime
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.selectedDateTime = result;
-      }
-    });
-  }
-
-  updateDateTime(dateTime: Date): void {
-    this.dateTimeService.updateDateTime(dateTime);
-  }
-  
-  
-
+  //contador 
   
 agregarPanel() {
   if (this.contador < 11) {
@@ -103,19 +112,27 @@ getRange() {
   return Array.from({ length: this.contador }, (_, i) => i);
 }
 
-
-
-  
-  
-
-  
-  
-  
   panelOpenState = false;
   
 
+  // agregar cliente  
+
+  onNuevoCliente():void {
 
 
 
+    this.clienteNuevo = new ClienteNuevo (this.nombre, this.apellido_materno, this.apellido_paterno , this.fechaNacimiento
+      , this.fecha_reserva, this.identificacion, this.direccion, this.telefono, this.correo, this.estado)
 
+    this.clienteService.postCliente(this.clienteNuevo).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+
+
+
+  }
+
+  
 }

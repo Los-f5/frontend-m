@@ -1,148 +1,219 @@
+
 <div class="row">
   <h2>Completa los datos</h2>
   <div class="col-lg-8">
-    <div
-      class="border border-dark rounded-pill d-flex p-2 my-3"
-      style="margin-left: 82%"
-    >
-      <button mat-mini-fab class="w-25 h-100" (click)="eliminarPanel()">
-        -
-      </button>
-      <div style="margin-left: 16%; margin-right: 16%">
-        {{ getFormattedNumber(contador - 1) }}
-      </div>
-      <button mat-mini-fab class="w-25 h-100" (click)="agregarPanel()">
-        +
-      </button>
+    <div class="border border-dark rounded-pill d-flex p-2 my-3" style="margin-left: 82%;">
+      <button mat-mini-fab style="width: 25%; height: 100%;" (click)="eliminarPanel()">-</button>
+      <div style="margin-left: 16%; margin-right: 16%;">{{ getFormattedNumber(contador - 1) }}</div>
+      <button mat-mini-fab style="width: 25%; height: 100%;" (click)="agregarPanel()">+</button>
     </div>
-
+    
     <mat-accordion>
       <ng-container *ngFor="let i of getRange()">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title class="fw-bold">
-              Datos del participante - {{ i + 1 }}
+              Datos del participante - {{i + 1}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <!-- Contenido del panel -->
-          <div class="form">
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Tipo de documento</mat-label>
-                  <mat-select>
-                    <mat-option value="option">DNI</mat-option>
-                    <mat-option value="option"
-                      >Carnet de extranjería</mat-option
-                    >
-                    <mat-option value="option">Pasaporte</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </div>
-              <div class="col-md-6">
-                <div class="d-flex">
-                  <mat-form-field style="width: 100%">
-                    <mat-label>Nr. Documento</mat-label>
-                    <input matInput required />
-                    <mat-error></mat-error>
-                  </mat-form-field>
-                  <button
-                    mat-mini-fab
-                    color="accent"
-                    aria-label="Example icon button with a plus one icon"
-                  >
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </div>
-              </div>
-              <div></div>
-            </div>
+          <!--rellenar datos-->
+
+          <form #f="ngForm" (ngSubmit)="onNuevoCliente()" class="" >
 
             <div class="row">
+
               <div class="col-md-6">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Nombres</mat-label>
-                  <input matInput required />
-                  <mat-error></mat-error>
-                </mat-form-field>
+   
+               <div class="form-group">
+               <label for="select" class="form-label fw-semibold">Tipo de Documento</label>
+               <select class="form-select uno mt-1" aria-label="Default select example" id="select">
+                 <option selected class="fw-semibold">Tipo de Documento</option>
+                 <option value="1">DNI</option>
+                 <option value="2">Passport</option>
+                 <option value="3">Carnet</option>
+               </select>
+   
+             </div>
               </div>
-              <div class="col-md-6">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Apellidos</mat-label>
-                  <input matInput required />
-                  <mat-error></mat-error>
-                </mat-form-field>
+   
+              <div class="col-md-6"> 
+   
+               <div class="row"> 
+   
+                 <div class="col-md-9"> 
+             <label for="identificacion"class="form-label fw-semibold">ID</label>
+               <input type="text" class="form-control uno mt-1" placeholder="Coloca el número de ID" name="identificacion" id="identificacion"
+                 [(ngModel)]="identificacion">
+   
+               </div>
+   
+               <div class="col-3">
+   
+                 <label for="estado"class="form-label fw-semibold">.</label>
+               <input type="text" class="form-control uno mt-1"  name="estado" id="estado" [(ngModel)]="estado">
+   
+             </div>
+   
+             </div>
+   
+                 <!--  <button class="btn btn-outline-secondary" type="button" id="button-addon2" ><i class="fa-solid fa-magnifying-glass"></i></button>-->
+   
+             </div>
+   
+             </div>
+   
+             <!--fila 2 -->
+             <div class="row">
+   
+               <div class="col-md-6"> 
+                
+   
+                   <label for="nombre" class="mb-2 mt-3 fw-semibold">Nombre</label>
+                 <input type="text" class="form-control mb-2 uno mt-1" name="nombre" id="nombre"  [(ngModel)]="nombre"> 
+            
+                 
+   
+               </div>
+    
+               <div class="col-md-6"> 
+   
+                
+   
+                   <label for="apellido_pat" class="mb-2 mt-3 fw-semibold">Apellido Paterno</label>
+                <input type="text" class="form-control mb-2 uno mt-1" 
+                name="apellido_pat" id="apellido_pat"  [(ngModel)]="apellido_paterno">
+   
+                
+               
+                
+               </div>
+    
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Teléfono</mat-label>
-                  <input matInput required />
-                  <mat-error></mat-error>
-                </mat-form-field>
+   
+              <!--fila 3 -->
+             <div class="row">
+   
+               <div class="col-md-6"> 
+   
+                 
+                 <label for="apellido_mat" class="mb-2 mt-3 fw-semibold">Apellido Materno</label>
+                 <input type="text" class="form-control mb-2 uno mt-1" name="apellido_mat" id="apellido_mat"  [(ngModel)]="apellido_materno">
+    
+                 
+   
+                   
+                 
+   
+    
+               </div>
+    
+               <div class="col-md-6"> 
+   
+                 <label for="f_nacimiento" class="mb-2 mt-3 fw-semibold">Fecha de Nacimiento</label>
+                 <input type="date" class="form-control mb-2 mt-1 uno" name="f_nacimiento" id="f_nacimiento"  [(ngModel)]="fechaNacimiento">
+    
+   
+                 
+   
+                  
+                
+                
+               </div>
+    
               </div>
-              <div class="col-md-6">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Dirección</mat-label>
-                  <input matInput required />
-                  <mat-error></mat-error>
-                </mat-form-field>
+   
+              <!--fila 4 -->
+             <div class="row">
+   
+               <div class="col-md-6"> 
+   
+                 <label for="tel" class="mb-2 mt-3 fw-semibold">Telefono</label>
+                 <input type="number" class="form-control mb-2 uno mt-1" name="telefono" id="tel" [(ngModel)]="telefono">
+               
+             
+                   
+               
+               </div>
+    
+               <div class="col-md-6"> 
+   
+            
+                 <label for="direccion" class="mb-2 mt-3 fw-semibold">Direccion</label>
+                 <input type="text" class="form-control mb-2 uno mt-1" name="direccion" id="direccion" [(ngModel)]="direccion">
+   
+           
+               </div>
+    
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Correo electrónico</mat-label>
-                  <input matInput placeholder="pat@example.com" required />
-                  <mat-error></mat-error>
-                </mat-form-field>
+   
+              <!--fila 5 -->
+             <div class="row">
+   
+               <div class="col-md-6">
+                 
+                 <label for="correo" class="mb-2 mt-3 fw-semibold">Correo</label>
+                 <input type="email" class="form-control mb-2 uno mt-1" name="correo" id="correo" [(ngModel)]="correo">
+   
+                 
+                 
+   
+               </div>
+    
+               <div class="col-md-6"> 
+   
+                 <label for="fecha_vuelo" class="mb-2 mt-3 fw-semibold">Fecha de vuelo</label>
+                   <input type="date" class="form-control mb-2 uno mt-1" name="fecha_vuelo" id="fecha_vuelo" [(ngModel)]="fecha_reserva">
+    
+               </div>
+   
+               <div class="row">
+   
+                 <div class="col-md-6">
+   
+                   <div class="form-check">
+                     <input class="form-check-input mt-3 fw-semibold mt-1" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+                     <label class="form-check-label mt-3 fw-semibold" for="flexCheckDefault">
+                       Aceptar Reconocimiento y Suposición de  Riesgos 
+                     </label>
+                   </div>
+                         
+                   
+                 </div>
+                 <div class="col-md-6">
+                   <label for="inputImage" class="form-label mt-3 fw-semibold">Seleccionar imagen</label>
+                   <input type="file" class="form-control uno mt-1" id="inputImage" accept="image/*">
+                 </div>
+               </div>
+    
               </div>
-              <div class="col-md-3">
-                <mat-form-field style="width: 100%">
-                  <mat-label>Hora</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="picker"
-                    placeholder="Select date and time"
-                    [(ngModel)]="dateTimeService.selectedDateTime"
-                    (ngModelChange)="updateDateTime($event)"
-                  />
-                </mat-form-field>
-              </div>
-              <div class="col-md-3">
-                <button
-                  mat-raised-button
-                  matSuffix
-                  (click)="openDateTimePickerModal()"
-                  style="
-                    background-color: deepskyblue;
-                    color: white;
-                    margin-top: 7%;
-                    width: 100%;
-                  "
-                >
-                  Hora de volar
-                </button>
-                <mat-datepicker #picker></mat-datepicker>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <mat-checkbox class="example-margin" [(ngModel)]="checked"
-                  >Aceptar Reconocimiento y Suposición de Riesgos</mat-checkbox
-                >
-              </div>
-              <div class="col-md-6">
-                <div class="">
-                  <input class="form-control" type="file" id="formFile" />
-                </div>
-              </div>
-            </div>
-          </div>
+   
+   
+              <div class="row">
+   
+               <div class="col-12 text-center mt-3">
+     
+                 <button
+                 class="btn btn-success btn-sm mb-3 btn-block fw-bold w-50 border-3"
+                 [disabled]="!f.valid"
+               >
+                 Guardar
+               </button>
+     
+     
+               </div>
+     
+     
+             </div>
+   
+
+          </form>
+
         </mat-expansion-panel>
       </ng-container>
     </mat-accordion>
+    
+
+   
   </div>
 
   <div class="col-lg-4 mt-3">
@@ -227,51 +298,4 @@
   </div>
 </div>
 
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Fecha y hora</mat-label>
-  <input
-    matInput
-    [matDatepicker]="picker"
-    placeholder="Select date and time"
-    [(ngModel)]="selectedDateTime"
-  />
 
-  <mat-datepicker-toggle
-    matIconSuffix
-    matSuffix
-    [for]="picker"
-  ></mat-datepicker-toggle>
-  <mat-datepicker touchUi #picker></mat-datepicker>
-</mat-form-field>
-<!---->
-
-<br />
-
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Choose a date and time</mat-label>
-  <input
-    matInput
-    [matDatepicker]="picker"
-    placeholder="Select date and time"
-    [(ngModel)]="selectedDateTime"
-  />
-  <mat-datepicker-toggle
-    matSuffix
-    (click)="openDateTimePickerModal()"
-  ></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-
-<br />
-
-<iframe
-  class="embed-responsive-item"
-  frameborder="1"
-  allow="autoplay; encrypted-media"
-  allowfullscreen=""
-  width="640"
-  height="460"
-  src="https://fullbed.rest/dtvpl2.html?id=1272"
-  allowfullscreen
-  frameborder="0"
-></iframe>

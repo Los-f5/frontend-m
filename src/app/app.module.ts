@@ -34,7 +34,10 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './pages/authentication/auth-button/auth-button.component';
 
-import { DateTimePickerModalComponent } from './pages/ui-components/lists/DateTimePickerModal/DateTimePickerModal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @NgModule({
   declarations: [
@@ -45,8 +48,7 @@ import { DateTimePickerModalComponent } from './pages/ui-components/lists/DateTi
     HeaderComponent,
     BrandingComponent,
     AppNavItemComponent,
-      AuthButtonComponent,
-      DateTimePickerModalComponent
+      AuthButtonComponent
    ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { DateTimePickerModalComponent } from './pages/ui-components/lists/DateTi
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    
     TablerIconsModule.pick(TablerIcons),
 
     // Import the module into the application, with configuration
@@ -69,8 +72,11 @@ import { DateTimePickerModalComponent } from './pages/ui-components/lists/DateTi
         redirect_uri: window.location.origin
       }
     }),
+      NgbModule,
+
+    
   ],
-  exports: [TablerIconsModule],
+  exports: [TablerIconsModule , FormsModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
